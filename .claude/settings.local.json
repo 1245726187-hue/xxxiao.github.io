@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git --turbopack)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(mkdir -p \"C:/Users/雨晴/Desktop/eatin/src/lib/ai\" \"C:/Users/雨晴/Desktop/eatin/src/lib/validators\" \"C:/Users/雨晴/Desktop/eatin/src/app/api/ai/recognize\" \"C:/Users/雨晴/Desktop/eatin/src/app/api/ai/summary\" \"C:/Users/雨晴/Desktop/eatin/src/app/api/meals/[id]\")",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(node -e \"require\\('typescript'\\)\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\雨晴\\Desktop\\eatin\\src\\app\\api\\meals"
+    ]
+  }
+}

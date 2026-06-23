@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────
+   Theme tokens
+   ─────────────────────────────────────────────── */
+@theme {
+  /* ── Colors ── */
+  --color-surface-0: #ffffff;
+  --color-surface-50: #f5f5f7;
+  --color-surface-100: #efeff1;
+
+  --color-ink-900: #1c1c1e;
+  --color-ink-600: #636366;
+  --color-ink-400: #aeaeB2;
+  --color-ink-0: #ffffff;
+
+  --color-accent-orange: #ff6b35;
+  --color-accent-green: #34c759;
+  --color-accent-red: #ff3b30;
+  --color-accent-blue: #007aff;
+  --color-accent-yellow: #ffcc00;
+
+  /* Shorthand aliases */
+  --color-surface: var(--color-surface-0);
+  --color-surface-secondary: var(--color-surface-50);
+  --color-surface-tertiary: var(--color-surface-100);
+
+  --color-ink: var(--color-ink-900);
+  --color-ink-secondary: var(--color-ink-600);
+  --color-ink-tertiary: var(--color-ink-400);
+  --color-ink-inverse: var(--color-ink-0);
+
+  --color-accent: var(--color-accent-orange);
+  --color-success: var(--color-accent-green);
+  --color-danger: var(--color-accent-red);
+  --color-info: var(--color-accent-blue);
+  --color-warning: var(--color-accent-yellow);
+
+  /* ── Border Radius ── */
+  --radius-card: 1.5rem;
+  --radius-card-sm: 1rem;
+  --radius-card-lg: 2rem;
+  --radius-pill: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-float: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+  /* ── Typography ── */
+  --text-hero: 2rem;
+  --text-hero--line-height: 2.5rem;
+  --text-hero--font-weight: 700;
+  --text-hero--letter-spacing: -0.02em;
+
+  --text-title: 1.5rem;
+  --text-title--line-height: 2rem;
+  --text-title--font-weight: 600;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.5rem;
+  --text-body--font-weight: 400;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.125rem;
+  --text-caption--font-weight: 400;
+
+  /* ── Animation Keyframes ── */
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-fade-in: fade-in 0.4s ease-out;
+  --animate-scale-in: scale-in 0.3s ease-out;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-scan: scan 2s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(16px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes scan {
+    0% {
+      top: 0%;
+    }
+    50% {
+      top: 90%;
+    }
+    100% {
+      top: 0%;
+    }
+  }
+}
+
+/* ───────────────────────────────────────────────
+   Custom utility classes
+   ─────────────────────────────────────────────── */
+@utility glass-card {
+  background-color: rgb(255 255 255 / 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgb(255 255 255 / 0.3);
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--radius-card);
+}
+
+@utility card-elevated {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+@utility card-interactive {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-orange),
+    var(--color-accent-red)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ───────────────────────────────────────────────
+   Base styles
+   ─────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-surface-secondary);
+  color: var(--color-ink);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ───────────────────────────────────────────────
+   Scrollbar hiding utility
+   ─────────────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ───────────────────────────────────────────────
+   Framer-motion safe base styles
+   ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Allow framer-motion to manage its own will-change and transform */
+[data-motion="true"] {
+  will-change: auto;
+}
